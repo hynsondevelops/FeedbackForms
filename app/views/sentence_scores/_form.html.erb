@@ -1,0 +1,32 @@
+<%= form_with(model: sentence_score, local: true) do |form| %>
+  <% if sentence_score.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(sentence_score.errors.count, "error") %> prohibited this sentence_score from being saved:</h2>
+
+      <ul>
+      <% sentence_score.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :mcm_topic_id %>
+    <%= form.number_field :mcm_topic_id, id: :sentence_score_mcm_topic_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :score %>
+    <%= form.number_field :score, id: :sentence_score_score %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sentence %>
+    <%= form.text_field :sentence, id: :sentence_score_sentence %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

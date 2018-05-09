@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Random Sentences</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Student level</th>
+      <th>Sentence</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @random_sentences.each do |random_sentence| %>
+      <tr>
+        <td><%= random_sentence.student_level_id %></td>
+        <td><%= random_sentence.sentence %></td>
+        <td><%= link_to 'Show', random_sentence %></td>
+        <td><%= link_to 'Edit', edit_random_sentence_path(random_sentence) %></td>
+        <td><%= link_to 'Destroy', random_sentence, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Random Sentence', new_random_sentence_path %>

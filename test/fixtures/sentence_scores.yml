@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  mcm_topic_id: 1
+  score: 1
+  sentence: MyString
+
+two:
+  mcm_topic_id: 1
+  score: 1
+  sentence: MyString

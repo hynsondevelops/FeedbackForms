@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Student level:</strong>
+  <%= @random_sentence.student_level_id %>
+</p>
+
+<p>
+  <strong>Sentence:</strong>
+  <%= @random_sentence.sentence %>
+</p>
+
+<%= link_to 'Edit', edit_random_sentence_path(@random_sentence) %> |
+<%= link_to 'Back', random_sentences_path %>

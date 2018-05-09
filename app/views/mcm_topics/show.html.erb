@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @mcm_topic.user_id %>
+</p>
+
+<p>
+  <strong>Score:</strong>
+  <%= @mcm_topic.score %>
+</p>
+
+<p>
+  <strong>Sentence:</strong>
+  <%= @mcm_topic.sentence %>
+</p>
+
+<%= link_to 'Edit', edit_mcm_topic_path(@mcm_topic) %> |
+<%= link_to 'Back', mcm_topics_path %>

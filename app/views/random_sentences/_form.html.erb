@@ -1,0 +1,27 @@
+<%= form_with(model: random_sentence, local: true) do |form| %>
+  <% if random_sentence.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(random_sentence.errors.count, "error") %> prohibited this random_sentence from being saved:</h2>
+
+      <ul>
+      <% random_sentence.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :student_level_id %>
+    <%= form.number_field :student_level_id, id: :random_sentence_student_level_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sentence %>
+    <%= form.text_field :sentence, id: :random_sentence_sentence %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,32 @@
+<%= form_with(model: mcm_topic, local: true) do |form| %>
+  <% if mcm_topic.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(mcm_topic.errors.count, "error") %> prohibited this mcm_topic from being saved:</h2>
+
+      <ul>
+      <% mcm_topic.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.number_field :user_id, id: :mcm_topic_user_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :score %>
+    <%= form.number_field :score, id: :mcm_topic_score %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sentence %>
+    <%= form.text_field :sentence, id: :mcm_topic_sentence %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,3 +1,5 @@
+ruby '2.3.0'
+
 source 'https://rubygems.org'
 
 git_source(:github) do |repo_name|
@@ -21,6 +23,10 @@ gem 'webpacker'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 gem 'react_on_rails', '11.0.0' # Use the exact gem version to match npm version
+gem 'mini_racer'
+#Users
+gem 'devise'
+
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
@@ -55,3 +61,5 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+gem 'mini_racer', platforms: :ruby
