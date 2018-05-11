@@ -1,6 +1,6 @@
-<h1>Editing Random Sentence</h1>
+<h1>Editing random_sentence</h1>
 
-<%= render 'form', random_sentence: @random_sentence %>
+<%= render 'form' %>
 
-<%= link_to 'Show', @random_sentence %> |
-<%= link_to 'Back', random_sentences_path %>
+<%= link_to 'Show', [@random_sentence.student_level, @random_sentence] %> |
+<%= link_to 'Back', student_level_random_sentences_path(@random_sentence.student_level) %>

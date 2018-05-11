@@ -17,7 +17,7 @@ class McmTopicsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create mcm_topic" do
     assert_difference('McmTopic.count') do
-      post mcm_topics_url, params: { mcm_topic: { score: @mcm_topic.score, sentence: @mcm_topic.sentence, user_id: @mcm_topic.user_id } }
+      post mcm_topics_url, params: { mcm_topic: { topic_name: @mcm_topic.topic_name, user_id: @mcm_topic.user_id } }
     end
 
     assert_redirected_to mcm_topic_url(McmTopic.last)
@@ -34,7 +34,7 @@ class McmTopicsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update mcm_topic" do
-    patch mcm_topic_url(@mcm_topic), params: { mcm_topic: { score: @mcm_topic.score, sentence: @mcm_topic.sentence, user_id: @mcm_topic.user_id } }
+    patch mcm_topic_url(@mcm_topic), params: { mcm_topic: { topic_name: @mcm_topic.topic_name, user_id: @mcm_topic.user_id } }
     assert_redirected_to mcm_topic_url(@mcm_topic)
   end
 

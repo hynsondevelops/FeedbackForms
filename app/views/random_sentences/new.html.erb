@@ -1,5 +1,5 @@
-<h1>New Random Sentence</h1>
+<h1>New random_sentence</h1>
 
-<%= render 'form', random_sentence: @random_sentence %>
+<%= render 'form' %>
 
-<%= link_to 'Back', random_sentences_path %>
+<%= link_to 'Back', student_level_random_sentences_path(@random_sentence.student_level) %>

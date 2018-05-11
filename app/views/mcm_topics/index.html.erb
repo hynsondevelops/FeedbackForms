@@ -5,9 +5,8 @@
 <table>
   <thead>
     <tr>
+      <th>Topic name</th>
       <th>User</th>
-      <th>Score</th>
-      <th>Sentence</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -15,9 +14,8 @@
   <tbody>
     <% @mcm_topics.each do |mcm_topic| %>
       <tr>
+        <td><%= mcm_topic.topic_name %></td>
         <td><%= mcm_topic.user_id %></td>
-        <td><%= mcm_topic.score %></td>
-        <td><%= mcm_topic.sentence %></td>
         <td><%= link_to 'Show', mcm_topic %></td>
         <td><%= link_to 'Edit', edit_mcm_topic_path(mcm_topic) %></td>
         <td><%= link_to 'Destroy', mcm_topic, method: :delete, data: { confirm: 'Are you sure?' } %></td>

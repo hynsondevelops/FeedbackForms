@@ -1,48 +1,49 @@
 require 'test_helper'
 
-class RandomSentencesControllerTest < ActionDispatch::IntegrationTest
+class RandomSentencesControllerTest < ActionController::TestCase
   setup do
+    @student_level = student_levels(:one)
     @random_sentence = random_sentences(:one)
   end
 
   test "should get index" do
-    get random_sentences_url
+    get :index, params: { student_level_id: @student_level }
     assert_response :success
   end
 
   test "should get new" do
-    get new_random_sentence_url
+    get :new, params: { student_level_id: @student_level }
     assert_response :success
   end
 
   test "should create random_sentence" do
     assert_difference('RandomSentence.count') do
-      post random_sentences_url, params: { random_sentence: { sentence: @random_sentence.sentence, student_level_id: @random_sentence.student_level_id } }
+      post :create, params: { student_level_id: @student_level, random_sentence: @random_sentence.attributes }
     end
 
-    assert_redirected_to random_sentence_url(RandomSentence.last)
+    assert_redirected_to student_level_random_sentence_path(@student_level, RandomSentence.last)
   end
 
   test "should show random_sentence" do
-    get random_sentence_url(@random_sentence)
+    get :show, params: { student_level_id: @student_level, id: @random_sentence }
     assert_response :success
   end
 
   test "should get edit" do
-    get edit_random_sentence_url(@random_sentence)
+    get :edit, params: { student_level_id: @student_level, id: @random_sentence }
     assert_response :success
   end
 
   test "should update random_sentence" do
-    patch random_sentence_url(@random_sentence), params: { random_sentence: { sentence: @random_sentence.sentence, student_level_id: @random_sentence.student_level_id } }
-    assert_redirected_to random_sentence_url(@random_sentence)
+    put :update, params: { student_level_id: @student_level, id: @random_sentence, random_sentence: @random_sentence.attributes }
+    assert_redirected_to student_level_random_sentence_path(@student_level, RandomSentence.last)
   end
 
   test "should destroy random_sentence" do
     assert_difference('RandomSentence.count', -1) do
-      delete random_sentence_url(@random_sentence)
+      delete :destroy, params: { student_level_id: @student_level, id: @random_sentence }
     end
 
-    assert_redirected_to random_sentences_url
+    assert_redirected_to student_level_random_sentences_path(@student_level)
   end
 end

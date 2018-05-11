@@ -1,24 +1,31 @@
 class McmTopicsController < ApplicationController
   before_action :set_mcm_topic, only: [:show, :edit, :update, :destroy]
-
+  before_action :requires_logged_in
   # GET /mcm_topics
   # GET /mcm_topics.json
   def index
-    @mcm_topics = McmTopic.all
+    @mcm_topics = McmTopic.all.where(user_id: current_user.id)
   end
 
   # GET /mcm_topics/1
   # GET /mcm_topics/1.json
   def show
+    if (current_user.id != @mcm_topic.user_id)
+      redirect_to "/mcm_topics"
+    end
   end
 
   # GET /mcm_topics/new
   def new
     @mcm_topic = McmTopic.new
+    #@mcm_topic.sentence_scores.build
   end
 
   # GET /mcm_topics/1/edit
   def edit
+    if (current_user.id != @mcm_topic.user_id)
+      redirect_to "/mcm_topics"
+    end
   end
 
   # POST /mcm_topics
@@ -69,6 +76,12 @@ class McmTopicsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def mcm_topic_params
-      params.require(:mcm_topic).permit(:user_id, :score, :sentence)
+      params.require(:mcm_topic).permit(:topic_name, :user_id, sentence_scores_attributes: [:id, :score, :sentence, :_destroy])
+    end
+
+    def requires_logged_in
+      if (!user_signed_in?)
+        redirect_to "/users/sign_in"
+      end
     end
 end

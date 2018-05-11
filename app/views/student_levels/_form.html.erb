@@ -1,4 +1,4 @@
-<%= form_with(model: student_level, local: true) do |form| %>
+<%= form_for(student_level) do |form| %>
   <% if student_level.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(student_level.errors.count, "error") %> prohibited this student_level from being saved:</h2>
@@ -12,8 +12,7 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :user_id %>
-    <%= form.number_field :user_id, id: :student_level_user_id %>
+    <%= form.hidden_field :user_id, id: :student_level_user_id, :value => current_user.id %>
   </div>
 
   <div class="field">
@@ -25,6 +24,14 @@
     <%= form.label :generic_text %>
     <%= form.text_field :generic_text, id: :student_level_generic_text %>
   </div>
+
+  <%= form.fields_for :random_sentences do |random_sentence_form| %>
+        <%= render 'random_sentence_fields', :f => random_sentence_form %>
+  <% end %>
+  <div class='links'>
+    <%= link_to_add_association 'Add Sentence', form, :random_sentences %>
+  </div>
+
 
   <div class="actions">
     <%= form.submit %>

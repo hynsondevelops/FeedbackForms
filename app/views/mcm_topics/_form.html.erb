@@ -1,4 +1,4 @@
-<%= form_with(model: mcm_topic, local: true) do |form| %>
+<%= semantic_form_for mcm_topic do |form| %>
   <% if mcm_topic.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(mcm_topic.errors.count, "error") %> prohibited this mcm_topic from being saved:</h2>
@@ -12,21 +12,23 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :user_id %>
-    <%= form.number_field :user_id, id: :mcm_topic_user_id %>
+    <%= form.label :topic_name %>
+    <%= form.text_field :topic_name, id: :mcm_topic_topic_name %>
   </div>
 
   <div class="field">
-    <%= form.label :score %>
-    <%= form.number_field :score, id: :mcm_topic_score %>
+    <%= form.hidden_field :user_id, id: :mcm_topic_user_id, :value => @current_user.id %>
   </div>
 
-  <div class="field">
-    <%= form.label :sentence %>
-    <%= form.text_field :sentence, id: :mcm_topic_sentence %>
+  <%= form.fields_for :sentence_scores do |sentence_score_form| %>
+        <%= render 'sentence_score_fields', :f => sentence_score_form %>
+  <% end %>
+  <div class='links'>
+    <%= link_to_add_association 'Add Sentence', form, :sentence_scores %>
   </div>
 
   <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>
+  

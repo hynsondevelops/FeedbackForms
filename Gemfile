@@ -27,6 +27,12 @@ gem 'mini_racer'
 #Users
 gem 'devise'
 
+gem 'nested_scaffold'
+gem "cocoon"
+  gem 'formtastic', '~> 3.0'
+gem 'jquery-rails'
+
+
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'

@@ -10,12 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180509161439) do
+ActiveRecord::Schema.define(version: 20180509183743) do
 
   create_table "mcm_topics", force: :cascade do |t|
+    t.string "topic_name"
     t.integer "user_id"
-    t.integer "score"
-    t.string "sentence"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -25,6 +24,7 @@ ActiveRecord::Schema.define(version: 20180509161439) do
     t.string "sentence"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["student_level_id"], name: "index_random_sentences_on_student_level_id"
   end
 
   create_table "sentence_scores", force: :cascade do |t|

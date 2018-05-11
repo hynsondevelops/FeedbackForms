@@ -1,0 +1,1 @@
+json.partial! "student_level_random_sentences/student_level_random_sentence", student_level_random_sentence: @student_level_random_sentence
